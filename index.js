@@ -3,7 +3,7 @@ function choice(choices) {
   return choices[index];
 }
 
-const genPasswords = (
+function genPasswords(
   userChars = {
     countChars: 12,
     countPasswords: 1,
@@ -12,7 +12,7 @@ const genPasswords = (
     lowercase: true,
     punctuation: true,
   }
-) => {
+) {
   const allChars = {
     digits: "0123456789",
     uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -46,6 +46,6 @@ const genPasswords = (
   }
 
   return passwords;
-};
+}
 
-(modules.exports = choice), genPasswords;
+module.exports = { choice, genPasswords };
