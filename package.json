@@ -2,10 +2,14 @@
   "name": "gb-hw-node-js-02",
   "version": "1.0.0",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanya1254/GB-HW-NODE-JS-02.git"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./index.js"
   },
-  "author": "",
+  "author": "Ivan L",
   "license": "ISC"
 }

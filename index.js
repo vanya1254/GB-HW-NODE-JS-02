@@ -1,18 +1,51 @@
-// Написать свою собственную библиотеку и опубликовать в NPM.
+function choice(choices) {
+  const index = Math.floor(Math.random() * choices.length);
+  return choices[index];
+}
 
-// Что нужно помнить при реализации:
+const genPasswords = (
+  userChars = {
+    countChars: 12,
+    countPasswords: 1,
+    digits: true,
+    uppercase: true,
+    lowercase: true,
+    punctuation: true,
+  }
+) => {
+  const allChars = {
+    digits: "0123456789",
+    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    lowercase: "abcdefghijklmnopqrstuvwxyz",
+    punctuation: "!#$%&*+-=?@^_",
+  };
 
-// — Ваш модуль должен обязательно экспортировать функции которые будут полезны вашим пользователям с помощью modules.exports
-// — Не забудьте указать в package.json в поле main файл, который будет основным в вашей библиотеке
-// — Обязательно создайте и опишите README.md файл в корне вашего проекта
-// — Если у вас есть репозиторий в github или gitlab, опубликуйте туда ваш код и в package.json укажите ссылку на репозиторий в поле repository
-// — Протестируйте работу вашей библиотеки после публикации. Попробуйте установить её в любом другом проекте с помощью npm i имявашейбиблиотеки и попробуйте ее использовать.
+  let needChars = "";
 
-// Формат сдачи задания:
-// — Достаточно прислать ссылку на сайт https://npmjs.com/ на вашу библиотеку.
+  if (userChars.digits) {
+    needChars += allChars.digits;
+  }
+  if (userChars.uppercase) {
+    needChars += allChars.uppercase;
+  }
+  if (userChars.lowercase) {
+    needChars += allChars.lowercase;
+  }
+  if (userChars.punctuation) {
+    needChars += allChars.punctuation;
+  }
 
-// Идеи для библиотеки:
+  const passwords = [];
 
-// — Библиотека для генерации случайных данных, таких как имена, адреса, даты, числа и т.д. Это может быть полезно для тестирования или создания заглушек данных.
-// — Библиотека для работы с математикой: например функции для решения квадратных уравнений.
-// — Библиотека для генерации паролей, которая позволяет генерировать случайные и безопасные пароли. Можно реализовать методы для указания длины пароля, использования различных типов символов (буквы, цифры, специальные символы) и т.д.
+  for (let i = 0; i < userChars.countPasswords; i++) {
+    let password = "";
+    for (let j = 0; j < userChars.countChars; j++) {
+      password += choice(needChars);
+    }
+    passwords.push(password);
+  }
+
+  return passwords;
+};
+
+(modules.exports = choice), genPasswords;
